@@ -3,11 +3,26 @@
 import React from 'react'
 import {render} from 'react-dom'
 import App from '../components/App'
+import configureStore from '../redux/store'
+import { Provider } from 'react-redux'
+
+// config and create store
+let initialState = {
+    todos: [{
+        id: 0,
+        completed: false,
+        text: 'Initial todo for demo purposes'
+    }]
+}
+
+// createstore()recudes, initialState)
+let store = configureStore(initialState)
+
+
 
 render(
-    <App/>,
+    <Provider store={store}>
+        <App/>
+    </Provider>,
     document.getElementById('app')
 )
-
-
-
